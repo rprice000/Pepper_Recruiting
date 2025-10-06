@@ -1,205 +1,101 @@
-// Initial Setup
+// main.js
+document.addEventListener("DOMContentLoaded", () => {
+  // Forms
+  const employerForm = document.getElementById("employerForm");
+  const employeeForm = document.getElementById("employeeForm");
 
-document.addEventListener('DOMContentLoaded', () => {
-  // ---------------------------
-  // Helpers (used by contact form)
-  // ---------------------------
-  const uuid = () => (crypto?.randomUUID ? crypto.randomUUID() :
-    'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
-      const r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
-      return v.toString(16);
-    })
-  );
+  // Alerts
+  const successAlert = document.getElementById("successAlert");
+  const errorAlert = document.getElementById("errorAlert");
+  const errorAlertMsg = document.getElementById("errorAlertMsg");
 
-  const showAlert = (el, message) => {
-    if (!el) return;
-    // if it's the error alert and a message is provided, set it
-    if (message) {
-      const span = el.querySelector('#errorAlertMsg');
-      if (span) span.textContent = message;
+  // Utility: generate a unique idempotency key
+  function generateIdempotencyKey() {
+    return "pepper-" + Date.now() + "-" + Math.random().toString(36).substring(2, 10);
+  }
+
+  // Utility: show Bootstrap alert
+  function showAlert(element, isSuccess, msg = null) {
+    const alertEl = isSuccess ? successAlert : errorAlert;
+    if (!isSuccess && msg) errorAlertMsg.textContent = msg;
+
+    alertEl.classList.remove("d-none");
+    alertEl.classList.add("show");
+    alertEl.style.opacity = "1";
+
+    setTimeout(() => {
+      alertEl.classList.remove("show");
+      alertEl.classList.add("d-none");
+    }, 6000);
+  }
+
+  // Core submit logic
+  async function handleFormSubmit(event, formType) {
+    event.preventDefault();
+    const form = event.target;
+
+    // Basic validation
+    if (!form.checkValidity()) {
+      event.stopPropagation();
+      form.classList.add("was-validated");
+      return;
     }
-    el.classList.remove('d-none');
-    // allow .fade + .show to animate
-    setTimeout(() => el.classList.add('show'), 10);
-  };
 
-  const hideAlert = (el) => {
-    if (!el) return;
-    el.classList.remove('show');
-    setTimeout(() => el.classList.add('d-none'), 300);
-  };
+    // Disable button to prevent duplicate submits
+    const submitButton = form.querySelector("button[type='submit']");
+    submitButton.disabled = true;
+    submitButton.textContent = "Sending...";
 
-  const setBtnLoading = (btn, isLoading, restoreText) => {
-    if (!btn) return;
-    if (isLoading) {
-      btn.dataset._originalText = btn.textContent;
-      btn.disabled = true;
-      btn.textContent = 'Sending...';
-    } else {
-      btn.disabled = false;
-      btn.textContent = restoreText || btn.dataset._originalText || 'Send Message';
-      delete btn.dataset._originalText;
-    }
-  };
+    try {
+      // Get reCAPTCHA token
+      const token = await grecaptcha.execute(CONFIG.RECAPTCHA_SITE_KEY, { action: formType });
+      const idempotencyKey = generateIdempotencyKey();
 
-  // ---------------------------
-  // Form validation and handling
-  // ---------------------------
-  document.querySelectorAll('.needs-validation').forEach(form => {
-    form.addEventListener('submit', event => {
-      // native HTML5 validation first
-      if (!form.checkValidity()) {
-        event.preventDefault();
-        event.stopPropagation();
-        form.classList.add('was-validated');
-        return;
+      // Prepare form data
+      const formData = new FormData(form);
+      formData.set("recaptcha_token", token);
+      formData.set("idempotency_key", idempotencyKey);
+
+      // Determine API endpoint
+      const endpoint =
+        formType === "employer"
+          ? `${CONFIG.API_BASE_URL}/employer`
+          : `${CONFIG.API_BASE_URL}/employee`;
+
+      // Send request to API Gateway
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: {
+          "X-Idempotency-Key": idempotencyKey,
+        },
+        body: formData, // includes file uploads
+      });
+
+      if (!response.ok) {
+        const errBody = await response.text();
+        console.error("API Error:", errBody);
+        throw new Error("Submission failed. Please try again later.");
       }
 
-      // Contact form: intercept and send to API
-      if (form.id === 'contactForm') {
-        event.preventDefault();
-
-        const successAlert = document.getElementById('successAlert');
-        const errorAlert   = document.getElementById('errorAlert');
-        const submitBtn    = form.querySelector('button[type="submit"]');
-
-        // clear any prior state
-        hideAlert(successAlert);
-        hideAlert(errorAlert);
-        setBtnLoading(submitBtn, true);
-
-        // ensure hidden fields exist
-        const idemInput   = document.getElementById('idempotency_key');
-        const tokenInput  = document.getElementById('recaptcha_token');
-        const formTypeEl  = document.getElementById('formType');
-        const nameEl      = document.getElementById('name');
-        const emailEl     = document.getElementById('email');
-        const messageEl   = document.getElementById('message');
-        const companyEl   = document.getElementById('company'); // honeypot
-
-        // generate idempotency key for this submit
-        const idem = uuid();
-        if (idemInput) idemInput.value = idem;
-
-        // function to actually send to API once we have a reCAPTCHA token
-        const doSubmit = async (token) => {
-          if (tokenInput) tokenInput.value = token || '';
-
-          const payload = {
-            formType: formTypeEl?.value || 'contact',
-            name:     nameEl?.value?.trim() || '',
-            email:    emailEl?.value?.trim() || '',
-            message:  messageEl?.value?.trim() || '',
-            company:  companyEl?.value || '',            // honeypot
-            recaptcha_token: token || ''
-          };
-
-          try {
-            const res = await fetch(window.CONFIG?.apiUrl, {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-                'x-idempotency-key': idem
-              },
-              body: JSON.stringify(payload)
-            });
-
-            const ct   = res.headers.get('content-type') || '';
-            const data = ct.includes('application/json') ? await res.json().catch(() => null) : null;
-
-            if (res.ok) {
-              // 200/202
-              showAlert(successAlert);
-              form.reset();
-              form.classList.remove('was-validated');
-              setTimeout(() => hideAlert(successAlert), 5000);
-            } else if (res.status === 400) {
-              const err = (data && data.error) ? String(data.error) : 'Bad request';
-              if (err === 'recaptcha_failed') {
-                showAlert(errorAlert, 'Verification failed. Please try again.');
-              } else if (/missing fields/i.test(err)) {
-                showAlert(errorAlert, 'Please complete all required fields and try again.');
-              } else {
-                showAlert(errorAlert, 'Please check your inputs and try again.');
-              }
-            } else if (res.status === 403 || res.status === 429) {
-              showAlert(errorAlert, 'Too many attempts or blocked. Please try again later.');
-            } else {
-              showAlert(errorAlert, 'Something went wrong on our end. Please try again later.');
-            }
-          } catch (e) {
-            console.error('Network/JS error', e);
-            showAlert(errorAlert, 'Network error. Please try again.');
-          } finally {
-            setBtnLoading(submitBtn, false);
-          }
-        };
-
-        // request a reCAPTCHA v3 token then submit
-        try {
-          if (window.grecaptcha && window.CONFIG?.recaptchaSiteKey) {
-            window.grecaptcha.ready(() => {
-              window.grecaptcha.execute(window.CONFIG.recaptchaSiteKey, { action: 'contact' })
-                .then(token => doSubmit(token))
-                .catch(err => {
-                  console.error('grecaptcha execute error', err);
-                  showAlert(errorAlert, 'Verification unavailable. Please try again.');
-                  setBtnLoading(submitBtn, false);
-                });
-            });
-          } else {
-            showAlert(errorAlert, 'Verification not loaded. Please refresh and try again.');
-            setBtnLoading(submitBtn, false);
-          }
-        } catch (e) {
-          console.error('grecaptcha error', e);
-          showAlert(errorAlert, 'Verification error. Please try again.');
-          setBtnLoading(submitBtn, false);
-        }
-
-        // keep validation styles active
-        form.classList.add('was-validated');
-        return;
-      }
-
-      // Non-contact forms (if any) just use native validation
-      form.classList.add('was-validated');
-    });
-  });
-
-  // Active navigation highlighting
-  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-  document.querySelectorAll('.nav-link').forEach(link => {
-    if (link.getAttribute('href').endsWith(currentPage)) {
-      link.classList.add('active');
+      const result = await response.json();
+      console.log("Success:", result);
+      showAlert(successAlert, true);
+      form.reset();
+    } catch (error) {
+      console.error("Error:", error);
+      showAlert(errorAlert, false, error.message);
+    } finally {
+      submitButton.disabled = false;
+      submitButton.textContent =
+        formType === "employer" ? "Submit Employer Form" : "Submit Employee Form";
     }
-  });
+  }
 
-  // Fade in elements on scroll (Optimized with Intersection Observer)
-  const fadeElements = document.querySelectorAll('.fade-in');
-
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target); // Stop observing once visible
-        }
-      });
-    }, { threshold: 0.3 });
-
-    fadeElements.forEach(element => observer.observe(element));
-  } else {
-    // Fallback for older browsers
-    const fadeInOnScroll = () => {
-      fadeElements.forEach(element => {
-        const { top, bottom } = element.getBoundingClientRect();
-        if (top < window.innerHeight && bottom >= 0) {
-          element.classList.add('visible');
-        }
-      });
-    };
-    fadeInOnScroll();
-    window.addEventListener('scroll', fadeInOnScroll);
+  // Attach handlers
+  if (employerForm) {
+    employerForm.addEventListener("submit", (e) => handleFormSubmit(e, "employer"));
+  }
+  if (employeeForm) {
+    employeeForm.addEventListener("submit", (e) => handleFormSubmit(e, "employee"));
   }
 });
