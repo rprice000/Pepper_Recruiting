@@ -1,163 +1,284 @@
-/* Initial Setup */
+/* =======================================================
+   Pepper Recruiting - Custom Styles
+   Author: Reagan Price
+   Updated: 2025-10-16
+   Description: Unified stylesheet for all site pages
+   ======================================================= */
 
-/* General Styles */
+/* -------------------------------------------------------
+   GLOBAL STYLES (Shared across all pages)
+------------------------------------------------------- */
+
+html, body {
+  scroll-behavior: smooth;
+}
+
 body {
-    padding-top: 76px;
+  font-family: "Inter", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
 }
 
-/* Hero Section */
-.hero-section {
-    min-height: 35vh;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+a {
+  text-decoration: none;
 }
 
-.hero-section .overlay {
-    z-index: 1;
+a:hover {
+  text-decoration: underline;
 }
 
-.hero-section .btn {
-    z-index: 3;
-    transition: transform 0.3s ease, background-color 0.3s ease;
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
 }
 
-.hero-section .btn:hover {
-    transform: translateY(-2px);
-    background-color: rgba(255, 255, 255, 0.2);
+.btn-primary {
+  background-color: #0d6efd;
+  border: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-/* Card Hover Effects */
+.btn-primary:hover {
+  background-color: #0b5ed7;
+  transform: translateY(-2px);
+}
+
+.btn-outline-primary:hover {
+  background-color: #0d6efd;
+  color: #fff;
+}
+
+footer a.text-light:hover {
+  color: #0d6efd;
+  text-decoration: none;
+}
+
+footer {
+  font-size: 0.95rem;
+}
+
+/* Navbar Brand */
+.navbar-brand {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Card defaults */
 .card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: none;
+  transition: all 0.3s ease;
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Custom Section Spacing */
-section {
-    padding: 80px 0;
+/* Utility */
+.text-muted {
+  color: #adb5bd !important;
 }
 
-/* Image Styles */
-.img-fluid {
-    border-radius: 8px;
+/* -------------------------------------------------------
+   HOMEPAGE STYLES (index.html)
+------------------------------------------------------- */
+
+/* Hero Section */
+.hero-section {
+  background-size: cover;
+  background-position: center;
+  min-height: 80vh;
+  position: relative;
+}
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.75));
+  z-index: 1;
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-/* Card Images */
-.card img {
-    height: 250px;
-    object-fit: cover;
+/* Feature Cards */
+.feature-card {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
 }
 
-/* Form Styles */
-.form-control:focus {
-    box-shadow: 0 0 0 0.2rem rgba(var(--bs-primary-rgb), 0.25);
-}
-
-/* Animation Classes */
-.fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease-in, transform 0.5s ease-in;
-}
-
-.fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Alert Styles */
-.alert {
-    position: fixed;
-    top: 76px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1000;
-    min-width: 300px;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-}
-
-.alert.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    .hero-section {
-        min-height: 50vh;
-    }
-
-    section {
-        padding: 40px 0;
-    }
-
-    .container {
-        padding: 0 15px;
-    }
-
-    .col-md-6 {
-        margin-bottom: 30px;
-    }
-
-    .card img {
-        height: 200px;
-    }
-}
-
-
-/* CTA Section - Increased Height & Centering */
+/* CTA Section */
 .cta-section {
-    position: relative;
-    background-size: cover;
-    background-position: center;
-    min-height: 35vh; /* Adjusted height */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 100px 0; /* Extra spacing */
+  position: relative;
+  color: #fff;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
-
-/* Dark overlay to improve readability */
 .cta-section::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Keeps text readable */
-    z-index: 1;
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 1;
 }
-
-/* Ensures text & button stay on top */
 .cta-section .container {
-    position: relative;
-    z-index: 2;
+  position: relative;
+  z-index: 2;
 }
 
+/* -------------------------------------------------------
+   SERVICES PAGE STYLES (services.html)
+------------------------------------------------------- */
 
-/* Make the page fill the screen & push the footer down */
-html, body {
-    height: 100%;
+/* Header Section */
+.services-header {
+  background-image: url("https://images.unsplash.com/photo-1521791136064-7986c2920216");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  min-height: 60vh;
+  padding-top: 100px;
+  color: #fff;
+}
+.services-header .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 1;
+}
+.services-header .container {
+  position: relative;
+  z-index: 2;
 }
 
-.wrapper {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* Full viewport height */
+/* Service Cards */
+.service-card {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  background-color: #fff;
+}
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
 }
 
-/* Push the footer to the bottom */
-.main-content {
-    flex-grow: 1; /* Allows main content to expand while keeping footer at bottom */
+/* CTA Section (Shared with Home) */
+.cta-section {
+  position: relative;
+  color: #fff;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+.cta-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 1;
+}
+.cta-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* -------------------------------------------------------
+   CONTACT PAGE STYLES (contact.html)
+------------------------------------------------------- */
+
+/* Header Section */
+.contact-header {
+  background-image: url("https://images.unsplash.com/photo-1521791055366-0d553872125f");
+  background-size: cover;
+  background-position: center;
+  min-height: 60vh;
+  position: relative;
+  padding-top: 100px;
+  color: #fff;
+}
+.contact-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 1;
+}
+.contact-header .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Tabs */
+.nav-tabs .nav-link {
+  color: #ccc;
+  border: none;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s ease;
+}
+.nav-tabs .nav-link:hover {
+  color: #0d6efd;
+}
+.nav-tabs .nav-link.active {
+  color: #fff;
+  border-color: #0d6efd;
+  background-color: transparent;
+}
+
+/* Contact Cards */
+.contact-card {
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.contact-info-card {
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Alerts (Success / Error Messages) */
+.alert {
+  border: none;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  font-weight: 500;
+}
+.alert-success {
+  background-color: #198754;
+  color: #fff;
+}
+.alert-danger {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+/* -------------------------------------------------------
+   RESPONSIVE TWEAKS
+------------------------------------------------------- */
+
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: 60vh;
+  }
+  .contact-header,
+  .services-header {
+    min-height: 45vh;
+    padding-top: 80px;
+  }
+  .cta-section {
+    background-attachment: scroll;
+  }
 }
