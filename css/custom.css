@@ -58,8 +58,10 @@ footer {
 /* Navbar Brand */
 .navbar-brand {
   font-weight: 600;
-  letter-spacing: 0.5px;
-  font-size: 0.95rem;
+  /* letter-spacing: 0.5px; */
+  letter-spacing: 0.08em;
+  /* font-size: 0.95rem; */
+  font-size: 1.2rem;
   text-decoration: none;
 }
 
@@ -72,12 +74,21 @@ footer {
   background: transparent;
   box-shadow: none;
   z-index: 10;
+  padding-top: 1rem;        /* add */
+  padding-bottom: 1rem;     /* add */
 }
 
 /* Make sure links stay readable over the image */
 .hero-navbar .navbar-brand,
 .hero-navbar .nav-link {
   color: #f8f9fa;
+}
+
+.navbar-nav .nav-link {
+  font-size: 1.05rem;       /* increase link text size */
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 0.6rem 1rem;     /* larger click area */
 }
 
 .hero-navbar .nav-link.active,
@@ -102,14 +113,18 @@ footer {
 
 .brand-title {
   font-weight: 700;
-  letter-spacing: 0.12em;
+  /* letter-spacing: 0.12em; */
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  font-size: 0.85rem;
+  /* font-size: 0.85rem; */
+  font-size: 1rem;
 }
 
 .brand-tagline {
-  font-size: 0.7rem;
-  opacity: 0.7;
+  /* font-size: 0.7rem; */
+  font-size: 0.8rem;
+  /* opacity: 0.7; */
+  opacity: 0.85;
   line-height: 1.2;
 }
 
@@ -121,7 +136,8 @@ footer {
 }
 
 .brand-logo {
-  height: 40px;
+  /* height: 40px; */
+  height: 50px;
   width: auto;
   object-fit: contain;
   background-color: #ffffff;
@@ -143,6 +159,21 @@ footer {
 .brand-logo:hover {
   transform: scale(1.05);
   box-shadow: 0 0 10px rgba(13, 110, 253, 0.3);
+}
+
+@media (max-width: 992px) {
+  .navbar-nav .nav-link {
+    font-size: 1rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .brand-logo {
+    height: 42px;
+  }
+
+  .brand-tagline {
+    display: none;          /* optional: hide tagline on smaller screens */
+  }
 }
 
 
