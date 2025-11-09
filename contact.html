@@ -1,179 +1,232 @@
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="IT recruiting and staffing services for technology companies" />
-  <title>Services | Pepper Recruiting</title>
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="favicon.ico" />
-
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <!-- Font Awesome -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-  <!-- Custom CSS -->
-  <link href="css/custom.css" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional IT recruitment services for top talent">
+    <title>Pepper Recruiting - Contact</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/custom.css" rel="stylesheet">
+    <!-- Google reCAPTCHA -->
+    <script src="https://www.google.com/recaptcha/api.js?render=6Lf-E6krAAAAACcDgsUsFduAtF2fBFf2iOgzPg5r" async defer></script>
 </head>
 
 <body>
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow-sm">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">
-        <i class="fa-solid fa-user-tie me-2 text-primary"></i>Pepper Recruiting
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active fw-semibold" href="services.html">Services</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="contact.html">Contact</a>
-          </li>
-        </ul>
-      </div>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Pepper Recruiting</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <section class="py-5 bg-primary text-light text-center">
+        <div class="container">
+            <h1 class="display-4">Contact Us</h1>
+            <p class="lead">Let's discuss your IT recruitment needs</p>
+        </div>
+    </section>
+
+    <!-- Alerts -->
+    <div class="alert alert-success alert-dismissible fade d-none" role="alert" id="successAlert">
+        Thank you for your message! We will get back to you soon.
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>
-  </nav>
-
-  <!-- Header Section -->
-  <header class="services-header text-center text-light d-flex flex-column justify-content-center align-items-center">
-    <div class="overlay"></div>
-    <div class="container position-relative">
-      <h1 class="display-5 fw-bold mb-3">Our Services</h1>
-      <p class="lead opacity-75 mb-0">Comprehensive recruiting and staffing solutions tailored for your organization</p>
+    <div class="alert alert-danger alert-dismissible fade d-none" role="alert" id="errorAlert">
+        <span id="errorAlertMsg">Something went wrong. Please try again.</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>
-  </header>
 
-  <!-- Services Cards Section -->
-  <section class="py-5 bg-light text-dark">
-    <div class="container">
-      <h2 class="text-center fw-bold mb-5">What We Offer</h2>
-      <div class="row g-4">
-        <!-- Permanent Placement -->
-        <div class="col-md-4">
-          <div class="card service-card text-center h-100">
-            <div class="card-body">
-              <i class="fa-solid fa-briefcase fa-3x mb-3 text-primary"></i>
-              <h5 class="fw-semibold mb-3">Permanent Placement</h5>
-              <p class="text-muted">
-                We connect your company with top-tier professionals who are ready for long-term success in your organization.
-              </p>
-            </div>
-          </div>
-        </div>
-        <!-- Contract Staffing -->
-        <div class="col-md-4">
-          <div class="card service-card text-center h-100">
-            <div class="card-body">
-              <i class="fa-solid fa-user-clock fa-3x mb-3 text-primary"></i>
-              <h5 class="fw-semibold mb-3">Contract Staffing</h5>
-              <p class="text-muted">
-                Need flexible, short-term talent? We provide skilled contractors to meet your immediate project needs.
-              </p>
-            </div>
-          </div>
-        </div>
-        <!-- Executive Search -->
-        <div class="col-md-4">
-          <div class="card service-card text-center h-100">
-            <div class="card-body">
-              <i class="fa-solid fa-user-tie fa-3x mb-3 text-primary"></i>
-              <h5 class="fw-semibold mb-3">Executive Search</h5>
-              <p class="text-muted">
-                Our executive recruitment team specializes in identifying and securing top leadership talent for your organizations.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+    <!-- Contact Forms -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <!-- Left Column: Forms -->
+                <div class="col-lg-6">
+                    <h2>Get in Touch</h2>
+                    <p class="lead mb-4">Choose the form that matches your need below.</p>
 
-      <div class="row g-4 mt-4">
-        <!-- Project-Based Hiring -->
-        <div class="col-md-4">
-          <div class="card service-card text-center h-100">
-            <div class="card-body">
-              <i class="fa-solid fa-diagram-project fa-3x mb-3 text-primary"></i>
-              <h5 class="fw-semibold mb-3">Project-Based Hiring</h5>
-              <p class="text-muted">
-                We help you build dedicated teams for specific projects, ensuring you meet deadlines with quality execution.
-              </p>
-            </div>
-          </div>
-        </div>
-        <!-- Remote Talent Acquisition -->
-        <div class="col-md-4">
-          <div class="card service-card text-center h-100">
-            <div class="card-body">
-              <i class="fa-solid fa-laptop-house fa-3x mb-3 text-primary"></i>
-              <h5 class="fw-semibold mb-3">Remote Talent Acquisition</h5>
-              <p class="text-muted">
-                Access a nationwide network of remote professionals, ready to integrate seamlessly into your team.
-              </p>
-            </div>
-          </div>
-        </div>
-        <!-- Consulting & Advisory -->
-        <div class="col-md-4">
-          <div class="card service-card text-center h-100">
-            <div class="card-body">
-              <i class="fa-solid fa-comments-dollar fa-3x mb-3 text-primary"></i>
-              <h5 class="fw-semibold mb-3">Consulting & Advisory</h5>
-              <p class="text-muted">
-                We provide strategic insights and workforce planning to help you optimize your hiring and retention processes.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+                    <!-- Tabs -->
+                    <ul class="nav nav-tabs mb-4" id="contactTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="employer-tab" data-bs-toggle="tab" data-bs-target="#employer" type="button" role="tab">
+                                Employer Form
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="employee-tab" data-bs-toggle="tab" data-bs-target="#employee" type="button" role="tab">
+                                Employee Form
+                            </button>
+                        </li>
+                    </ul>
 
-  <!-- CTA Section -->
-  <section class="cta-section text-center" style="background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d');">
-    <div class="container py-5">
-      <h2 class="fw-bold mb-3">Looking for the Right Talent?</h2>
-      <p class="lead mb-4">Partner with Pepper Recruiting to find the perfect professionals for your team.</p>
-      <a href="contact.html" class="btn btn-primary btn-lg px-4 py-3 shadow">Contact Us</a>
-    </div>
-  </section>
+                    <div class="tab-content" id="contactTabsContent">
 
-  <!-- Footer -->
-  <footer class="bg-dark text-light py-5 border-top border-secondary">
-    <div class="container">
-      <div class="row gy-4">
-        <div class="col-md-4">
-          <h5 class="fw-bold text-uppercase mb-3">Pepper Recruiting</h5>
-          <p class="text-muted mb-2">Connecting top talent with innovative companies.</p>
-        </div>
-        <div class="col-md-4">
-          <h5 class="fw-bold text-uppercase mb-3">Quick Links</h5>
-          <ul class="list-unstyled">
-            <li><a href="index.html" class="text-light">Home</a></li>
-            <li><a href="services.html" class="text-light">Services</a></li>
-            <li><a href="contact.html" class="text-light">Contact</a></li>
-          </ul>
-        </div>
-        <div class="col-md-4">
-          <h5 class="fw-bold text-uppercase mb-3">Contact</h5>
-          <p class="mb-1"><i class="fas fa-envelope text-primary me-2"></i> admin@pepperrecruiting.com</p>
-          <p class="mb-0"><i class="fas fa-phone text-primary me-2"></i> (512) 993-1572</p>
-        </div>
-      </div>
-      <div class="text-center mt-4 text-muted small">
-        © 2025 Pepper Recruiting. All rights reserved.
-      </div>
-    </div>
-  </footer>
+                        <!-- Employer Form -->
+                        <div class="tab-pane fade show active" id="employer" role="tabpanel">
+                            <form id="employerForm" class="needs-validation" novalidate enctype="multipart/form-data">
+                                
+                                <!-- Hidden reCAPTCHA token -->
+                                <input type="hidden" name="recaptcha_token" id="recaptcha_token_employer">
+                                
+                                <!-- Hidden honeypot field (anti-spam) -->
+                                <input type="text" name="hp" class="d-none" tabindex="-1" autocomplete="off">
+                                
+                                <!-- Hidden idempotency key (used by JS to avoid duplicate submissions) -->
+                                <input type="hidden" name="idempotency_key" id="idempotency_key_employer">
+                                
+                                <!-- Hidden form type (required by Lambda) -->
+                                <input type="hidden" name="formType" value="employer">
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+                                <!-- First Name -->
+                                <div class="mb-3">
+                                <label for="employerFirstName" class="form-label">First Name</label>
+                                <input type="text" class="form-control" id="employerFirstName" name="firstName" required>
+                                </div>
+
+                                <!-- Last Name -->
+                                <div class="mb-3">
+                                <label for="employerLastName" class="form-label">Last Name</label>
+                                <input type="text" class="form-control" id="employerLastName" name="lastName" required>
+                                </div>
+
+                                <!-- Email -->
+                                <div class="mb-3">
+                                <label for="employerEmail" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="employerEmail" name="email" required>
+                                </div>
+
+                                <!-- Phone -->
+                                <div class="mb-3">
+                                <label for="employerPhone" class="form-label">Phone</label>
+                                <input type="tel" class="form-control" id="employerPhone" name="phone" required>
+                                </div>
+
+                                <!-- Company Name -->
+                                <div class="mb-3">
+                                <label for="employerCompany" class="form-label">Company Name</label>
+                                <input type="text" class="form-control" id="employerCompany" name="company" required>
+                                </div>
+
+                                <!-- Job Description Upload -->
+                                <div class="mb-3">
+                                <label for="jobDescription" class="form-label">Upload Job Description</label>
+                                <input type="file" class="form-control" id="jobDescription" name="jobDescription" accept=".pdf,.doc,.docx" required>
+                                </div>
+
+                                <!-- Submit Button -->
+                                <button type="submit" class="btn btn-primary w-100">Submit Employer Form</button>
+                            </form>
+                        </div>
+
+                        <!-- Employee Form -->
+                        <div class="tab-pane fade" id="employee" role="tabpanel">
+                            <form id="employeeForm" class="needs-validation" novalidate enctype="multipart/form-data">
+                                
+                                <!-- Hidden reCAPTCHA token -->
+                                <input type="hidden" name="recaptcha_token" id="recaptcha_token_employee">
+                                
+                                <!-- Hidden honeypot field (anti-spam) -->
+                                <input type="text" name="hp" class="d-none" tabindex="-1" autocomplete="off">
+                                
+                                <!-- Hidden idempotency key (used by JS to avoid duplicate submissions) -->
+                                <input type="hidden" name="idempotency_key" id="idempotency_key_employee">
+                                
+                                <!-- Hidden form type (required by Lambda) -->
+                                <input type="hidden" name="formType" value="employee">
+
+                                <!-- First Name -->
+                                <div class="mb-3">
+                                <label for="employeeFirstName" class="form-label">First Name</label>
+                                <input type="text" class="form-control" id="employeeFirstName" name="firstName" required>
+                                </div>
+
+                                <!-- Last Name -->
+                                <div class="mb-3">
+                                <label for="employeeLastName" class="form-label">Last Name</label>
+                                <input type="text" class="form-control" id="employeeLastName" name="lastName" required>
+                                </div>
+
+                                <!-- Email -->
+                                <div class="mb-3">
+                                <label for="employeeEmail" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="employeeEmail" name="email" required>
+                                </div>
+
+                                <!-- Phone -->
+                                <div class="mb-3">
+                                <label for="employeePhone" class="form-label">Phone</label>
+                                <input type="tel" class="form-control" id="employeePhone" name="phone" required>
+                                </div>
+
+                                <!-- Resume Upload -->
+                                <div class="mb-3">
+                                <label for="resume" class="form-label">Upload Resume</label>
+                                <input type="file" class="form-control" id="resume" name="resume" accept=".pdf,.doc,.docx" required>
+                                </div>
+
+                                <!-- Submit Button -->
+                                <button type="submit" class="btn btn-primary w-100">Submit Employee Form</button>
+                            </form>
+                        </div>
+
+                    </div>
+
+                    <p class="mt-3 mb-0">
+                        <small class="text-muted">
+                            This site is protected by reCAPTCHA and the Google
+                            <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a> and
+                            <a href="https://policies.google.com/terms" target="_blank" rel="noopener">Terms of Service</a> apply.
+                        </small>
+                    </p>
+                </div>
+
+                <!-- Right Column: Contact Info -->
+                <div class="col-lg-6">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h3>Our Office</h3>
+                            <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72" alt="Office" class="img-fluid rounded mb-4">
+                            <h4>Contact Information</h4>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-phone text-primary"></i> (512) 993-1572</li>
+                                <li><i class="fas fa-envelope text-primary"></i> info@pepperrecruiting.com</li>
+                            </ul>
+                            <h4>Business Hours</h4>
+                            <ul class="list-unstyled">
+                                <li>Monday - Friday: 9:00 AM - 6:00 PM</li>
+                                <li>Saturday - Sunday: Closed</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container text-center">© 2024 Pepper Recruiting</div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
