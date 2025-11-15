@@ -241,7 +241,7 @@ footer a.text-light:hover {
 .cta-section {
   position: relative;
   color: #fff;
-  background-image: url("../assets/images/hero.png");
+  background-image: url("../assets/images/blank.png");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
