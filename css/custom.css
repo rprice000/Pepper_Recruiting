@@ -1,15 +1,16 @@
 /* =======================================================
    Pepper Recruiting - Custom Styles
    Author: Reagan Price
-   Updated: 2025-10-16
    Description: Unified stylesheet for all site pages
    ======================================================= */
 
+
 /* -------------------------------------------------------
-   GLOBAL STYLES (Shared across all pages)
+   GLOBAL
 ------------------------------------------------------- */
 
-html, body {
+html,
+body {
   scroll-behavior: smooth;
 }
 
@@ -26,10 +27,26 @@ a:hover {
   text-decoration: underline;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 600;
 }
 
+/* Footer */
+footer {
+  font-size: 0.95rem;
+}
+
+footer a.text-light:hover {
+  color: #0d6efd;
+  text-decoration: none;
+}
+
+/* Buttons */
 .btn-primary {
   background-color: #0d6efd;
   border: none;
@@ -46,97 +63,33 @@ h1, h2, h3, h4, h5, h6 {
   color: #fff;
 }
 
-footer a.text-light:hover {
-  color: #0d6efd;
-  text-decoration: none;
+/* Utilities */
+.text-muted {
+  color: #adb5bd !important;
 }
 
-footer {
-  font-size: 0.95rem;
-}
 
-/* Navbar Brand */
+/* -------------------------------------------------------
+   NAVBAR / BRAND
+------------------------------------------------------- */
+
 .navbar-brand {
   font-weight: 600;
-  /* letter-spacing: 0.5px; */
   letter-spacing: 0.08em;
-  /* font-size: 0.95rem; */
   font-size: 1.2rem;
   text-decoration: none;
 }
 
-/* Hero page navbar (over hero image) */
-.hero-navbar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: transparent;
-  box-shadow: none;
-  z-index: 10;
-  padding-top: 1rem;        /* add */
-  padding-bottom: 1rem;     /* add */
-}
-
-/* Make sure links stay readable over the image */
-.hero-navbar .navbar-brand,
-.hero-navbar .nav-link {
-  color: #f8f9fa;
-}
-
-/* .navbar-nav .nav-link {
-  font-size: 1.05rem;       
+/* Top nav links */
+.navbar-nav .nav-link {
+  font-size: 1.05rem;
   font-weight: 500;
   letter-spacing: 0.04em;
-  padding: 0.6rem 1rem;     
+  padding: 0.6rem 1rem;
 }
 
-.hero-navbar .nav-link.active,
-.hero-navbar .nav-link:hover {
-  color: #0d6efd;
-} */
-
-.services-header,
-.contact-header {
-  position: relative;
-  padding-top: 6rem; /* Space for the fixed navbar */
-}
-
-.brand-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  background: rgba(13, 110, 253, 0.18); /* subtle primary glow */
-  font-size: 1.1rem;
-}
-
-.brand-title {
-  font-weight: 700;
-  /* letter-spacing: 0.12em; */
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  /* font-size: 0.85rem; */
-  font-size: 1rem;
-}
-
-.brand-tagline {
-  /* font-size: 0.7rem; */
-  font-size: 0.8rem;
-  /* opacity: 0.7; */
-  opacity: 0.85;
-  line-height: 1.2;
-}
-
-/* Hide tagline on very small screens so it doesn't crowd the navbar */
-@media (max-width: 576px) {
-  .brand-tagline {
-    display: none;
-  }
-}
-
+/* Brand logo + tagline */
 .brand-logo {
-  /* height: 40px; */
   height: 50px;
   width: auto;
   object-fit: contain;
@@ -147,20 +100,36 @@ footer {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-@media (max-width: 576px) {
-  .brand-logo {
-    height: 32px;
-  }
-  .brand-tagline {
-    display: none;
-  }
-}
-
 .brand-logo:hover {
   transform: scale(1.05);
   box-shadow: 0 0 10px rgba(13, 110, 253, 0.3);
 }
 
+.brand-title {
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+
+.brand-tagline {
+  font-size: 0.8rem;
+  opacity: 0.85;
+  line-height: 1.2;
+}
+
+/* Very small screens */
+@media (max-width: 576px) {
+  .brand-logo {
+    height: 32px;
+  }
+
+  .brand-tagline {
+    display: none;
+  }
+}
+
+/* Medium screens */
 @media (max-width: 992px) {
   .navbar-nav .nav-link {
     font-size: 1rem;
@@ -172,13 +141,15 @@ footer {
   }
 
   .brand-tagline {
-    display: none;          /* optional: hide tagline on smaller screens */
+    display: none;
   }
 }
 
 
+/* -------------------------------------------------------
+   CARDS
+------------------------------------------------------- */
 
-/* Card defaults */
 .card {
   border: none;
   transition: all 0.3s ease;
@@ -189,28 +160,60 @@ footer {
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Utility */
-.text-muted {
-  color: #adb5bd !important;
+/* Homepage feature cards */
+.feature-card {
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
 }
 
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Service cards */
+.service-card {
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  background-color: #fff;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+
 /* -------------------------------------------------------
-   HOMEPAGE STYLES (index.html)
+   HERO & CTA (SHARED PATTERN)
 ------------------------------------------------------- */
 
-/* Hero Section */
 .hero-section {
-  background-size: cover;           
+  background-image: url("../assets/images/new-hero-2.png");
+  background-size: cover;
   background-repeat: no-repeat;
-  background-position: center left; 
+  background-position: center left;
   min-height: 60vh;
   padding: 4rem 0 3rem;
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: flex-end;        
+  justify-content: flex-end;
   text-align: left;
   filter: brightness(1.2);
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.35),
+    rgba(0, 0, 0, 0.55)
+  );
+  z-index: 1;
 }
 
 .hero-content {
@@ -219,19 +222,11 @@ footer {
   max-width: 800px;
   padding: 2rem 2.5rem;
   margin-right: 6%;
-  background: rgba(0, 0, 0, 0.45); 
+  background: rgba(0, 0, 0, 0.45);
   border-radius: 0.75rem;
-  backdrop-filter: blur(2px);      
-  text-shadow: none;               
+  backdrop-filter: blur(2px);
+  text-shadow: none;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-}
-
-.hero-kicker {
-  letter-spacing: 0.15em;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  opacity: 0.85;
-  margin-bottom: 0.5rem;
 }
 
 .hero-title {
@@ -242,40 +237,16 @@ footer {
   max-width: 640px;
 }
 
-.hero-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.35),
-    rgba(0, 0, 0, 0.55)
-  );
-  z-index: 1;
-}
-
-/* Feature Cards */
-.feature-card {
-  border: none;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
-  transition: all 0.3s ease;
-}
-.feature-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-}
-
-/* CTA Section */
+/* CTA background section */
 .cta-section {
   position: relative;
   color: #fff;
+  background-image: url("../assets/images/hero.png");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
 }
+
 .cta-section::before {
   content: "";
   position: absolute;
@@ -283,38 +254,28 @@ footer {
   background: rgba(0, 0, 0, 0.55);
   z-index: 1;
 }
+
 .cta-section .container {
   position: relative;
   z-index: 2;
 }
 
+
 /* -------------------------------------------------------
-   SERVICES PAGE STYLES (services.html)
+   SERVICES PAGE
 ------------------------------------------------------- */
 
-/* Header Section */
 .services-header {
-  background-image: url('../assets/images/services-hero-3.png');
+  background-image: url("../assets/images/services-hero-5.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  position: relative;
   min-height: 60vh;
   padding-top: 100px;
+  position: relative;
   color: #fff;
 }
-.services-header .overlay {
-  position: absolute;
-  inset: 0;
-  /* background: rgba(0, 0, 0, 0.55); */
-  /* z-index: 1; */
-}
-.services-header .container {
-  position: relative;
-  z-index: 2;
-}
 
-/* Right-aligned hero content for services page */
 .services-hero-content {
   position: relative;
   z-index: 2;
@@ -322,41 +283,29 @@ footer {
   padding-top: 120px;
   padding-bottom: 60px;
   display: flex;
+  justify-content: flex-end;
 }
 
-/* The dark transparent content box */
 .services-hero-box {
-  background: rgba(0, 0, 0, 0.55); /* match homepage hero box */
+  background: rgba(0, 0, 0, 0.55);
   border-radius: 12px;
   max-width: 500px;
   backdrop-filter: blur(2px);
 }
 
-/* Service Cards */
-.service-card {
-  border: none;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
-  transition: all 0.3s ease;
-  background-color: #fff;
-}
-.service-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+.services-cta {
+  background-image: url("../assets/images/blank.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
-
-
-/* ------------------------------- */
-/* FAQ SECTION STYLING             */
-/* ------------------------------- */
-
+/* FAQ section */
 .faq-section {
   padding-top: 4rem;
   padding-bottom: 4rem;
 }
 
-/* Section Headers */
 .faq-section h2,
 .faq-section h3 {
   letter-spacing: 0.5px;
@@ -364,7 +313,7 @@ footer {
 
 /* Accordion overrides */
 .accordion-item {
-  background-color: #1c1c1c; /* dark card look */
+  background-color: #1c1c1c;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 8px;
   margin-bottom: 12px;
@@ -381,9 +330,9 @@ footer {
   transition: background-color 0.2s ease;
 }
 
-/* Icon rotation when opening */
+/* Icon rotation */
 .accordion-button::after {
-  filter: invert(1); /* make arrow white */
+  filter: invert(1);
   transition: transform 0.2s ease;
 }
 
@@ -391,14 +340,13 @@ footer {
   transform: rotate(180deg);
 }
 
-/* Hover state */
+/* Hover + active states */
 .accordion-button:hover {
   background-color: #252525;
 }
 
-/* Active open state */
 .accordion-button:not(.collapsed) {
-  background-color: #0d6efd;   /* your brand blue */
+  background-color: #0d6efd;
   color: #fff;
 }
 
@@ -411,7 +359,7 @@ footer {
   line-height: 1.6;
 }
 
-/* Headings for "General", "Employer", "Candidate" */
+/* Headings inside FAQ */
 .faq-section h3 {
   margin-bottom: 1.25rem;
   margin-top: 2.5rem;
@@ -420,7 +368,7 @@ footer {
   color: #fff;
 }
 
-/* Contact line */
+/* FAQ contact line */
 .faq-contact-line {
   margin-top: 3rem;
   padding-top: 1.5rem;
@@ -439,52 +387,12 @@ footer {
 }
 
 
-
-/* CTA Section (Shared with Home) */
-.cta-section {
-  position: relative;
-  color: #fff;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-}
-.cta-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.55);
-  z-index: 1;
-}
-.cta-section .container {
-  position: relative;
-  z-index: 2;
-}
-
 /* -------------------------------------------------------
-   CONTACT PAGE STYLES (contact.html)
+   CONTACT PAGE
 ------------------------------------------------------- */
 
-/* Header Section */
-/* Centered hero content for Contact page */
-.contact-hero-content {
-  position: relative;
-  z-index: 2;
-  height: 100%;
-  padding-top: 120px;
-  padding-bottom: 60px;
-  display: flex;
-}
-
-/* The dark transparent content box */
-.contact-hero-box {
-  background: rgba(0, 0, 0, 0.55); /* same look as services/index */
-  border-radius: 12px;
-  max-width: 550px;
-  backdrop-filter: blur(2px);
-}
-
 .contact-header {
-  background-image: url('../assets/images/blank.png');
+  background-image: url("../assets/images/blank.png");
   background-size: cover;
   background-position: center;
   min-height: 60vh;
@@ -499,6 +407,25 @@ footer {
   z-index: 1;
 }
 
+.contact-hero-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  padding-top: 120px;
+  padding-bottom: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-hero-box {
+  background: rgba(0, 0, 0, 0.55);
+  border-radius: 12px;
+  max-width: 550px;
+  backdrop-filter: blur(2px);
+}
+
+
 /* Tabs */
 .nav-tabs .nav-link {
   color: #ccc;
@@ -506,44 +433,69 @@ footer {
   border-bottom: 3px solid transparent;
   transition: all 0.3s ease;
 }
+
 .nav-tabs .nav-link:hover {
   color: #0d6efd;
 }
+
 .nav-tabs .nav-link.active {
   color: #fff;
   border-color: #0d6efd;
   background-color: transparent;
 }
 
-/* Contact Cards */
-.contact-card {
-  background-color: #f8f9fa;
-  border-radius: 12px;
-  padding: 2rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-.contact-info-card {
-  background-color: #f8f9fa;
-  border-radius: 12px;
-  padding: 2rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+/* Contact cards (forms + side info) */
+.contact-card,
+.contact-info-card,
+.contact-side-card {
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
 }
 
-/* Alerts (Success / Error Messages) */
+/* Remove extra padding from .card-body when used inside contact-side-card */
+.contact-side-card .card-body {
+  padding: 0;
+}
+
+
+/* -------------------------------------------------------
+   ALERTS (CONTACT FORM MESSAGES)
+------------------------------------------------------- */
+
 .alert {
   border: none;
   border-radius: 8px;
   padding: 1rem 1.25rem;
   font-weight: 500;
 }
+
 .alert-success {
   background-color: #198754;
   color: #fff;
 }
+
 .alert-danger {
   background-color: #dc3545;
   color: #fff;
 }
+
+
+/* -------------------------------------------------------
+   LEGAL PAGES (PRIVACY / TERMS)
+------------------------------------------------------- */
+
+.privacy-hero-box .hero-title {
+  color: #ffffff !important;
+  background: rgba(0, 0, 0, 0.45);
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.7);
+  display: inline-block;
+  font-weight: 800;
+  padding: 1.25rem 2rem;
+  border-radius: 8px;
+}
+
 
 /* -------------------------------------------------------
    RESPONSIVE TWEAKS
@@ -553,25 +505,14 @@ footer {
   .hero-section {
     min-height: 60vh;
   }
+
   .contact-header,
   .services-header {
     min-height: 45vh;
     padding-top: 80px;
   }
+
   .cta-section {
     background-attachment: scroll;
   }
-}
-
-
-
-
-.privacy-hero-box .hero-title {
-  color: #ffffff !important;
-  background: rgba(0, 0, 0, 0.45);
-  text-shadow: 0 0 8px rgba(0, 0, 0, 0.7); 
-  display: inline-block;
-  font-weight: 800; 
-  padding: 1.25rem 2rem;
-  border-radius: 8px;
 }
