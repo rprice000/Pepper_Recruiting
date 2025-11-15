@@ -167,6 +167,15 @@ footer a.text-light:hover {
   transition: all 0.3s ease;
 }
 
+/* Make "Why Choose Us" cards equal height on tablet+ */
+@media (min-width: 768px) {
+  .feature-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+}
+
 .feature-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
@@ -276,6 +285,22 @@ footer a.text-light:hover {
   color: #fff;
 }
 
+/* Use a different hero image on small screens (phones) */
+@media (max-width: 767.98px) {
+  .services-header {
+    background-image: url("../assets/images/blank.png");
+    background-position: center top;
+  }
+}
+/* Tablets: use a different hero image */
+@media (min-width: 768px) and (max-width: 1199.98px) {
+  .services-header {
+    background-image: url("../assets/images/blank.png");
+    background-position: center;
+  }
+}
+
+
 .services-hero-content {
   position: relative;
   z-index: 2;
@@ -291,6 +316,13 @@ footer a.text-light:hover {
   border-radius: 12px;
   max-width: 500px;
   backdrop-filter: blur(2px);
+}
+
+@media (min-width: 768px) and (max-width: 1199.98px) {
+  .services-header .services-hero-content {
+    align-items: center !important; /* center horizontally */
+    text-align: center !important;
+  }
 }
 
 .services-cta {
@@ -516,3 +548,12 @@ footer a.text-light:hover {
     background-attachment: scroll;
   }
 }
+
+
+/* Add vertical spacing between the stacked columns on contact page */
+@media (max-width: 991.98px) { /* below lg breakpoint */
+  .contact-section .col-lg-6 + .col-lg-6 {
+    margin-top: 2.5rem; /* adjust up/down as needed */
+  }
+}
+
