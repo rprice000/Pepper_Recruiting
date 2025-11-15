@@ -562,3 +562,16 @@ footer {
     background-attachment: scroll;
   }
 }
+
+
+
+
+.privacy-hero-box .hero-title {
+  color: #ffffff !important;
+  background: rgba(0, 0, 0, 0.45);
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.7); 
+  display: inline-block;
+  font-weight: 800; 
+  padding: 1.25rem 2rem;
+  border-radius: 8px;
+}
