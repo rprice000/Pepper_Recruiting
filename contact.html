@@ -18,7 +18,7 @@
 
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark hero-navbar">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="index.html">
                 <img src="assets/images/logo.png" alt="Pepper Recruiting Logo" class="brand-logo me-2">
@@ -41,12 +41,17 @@
     </nav>
 
     <!-- Header -->
-    <section class="hero-section position-relative text-light" style="background-image: url('assets/images/hero.png');">
-        <div class="container">
-            <h1 class="display-4">Contact Us</h1>
-            <p class="lead">Let's discuss your IT recruitment needs</p>
+    <header class="contact-header text-light">
+        <div class="overlay"></div>
+
+        <div class="contact-hero-content container d-flex flex-column justify-content-center align-items-center text-center">
+            <div class="contact-hero-box p-4 p-md-5">
+            <h1 class="display-5 fw-bold mb-3">Contact Us</h1>
+            <p class="lead opacity-75 mb-0">Let's Discuss Your Recruitment and Employment Needs</p>
+            </div>
         </div>
-    </section>
+    </header>
+
 
     <!-- Alerts -->
     <div class="alert alert-success alert-dismissible fade d-none" role="alert" id="successAlert">
@@ -203,7 +208,7 @@
                 </div>
 
                 <!-- Right Column: Contact Info -->
-                <div class="col-lg-6">
+                <!-- <div class="col-lg-6">
                     <div class="card h-100">
                         <div class="card-body">
                             <h3>Our Office</h3>
@@ -220,6 +225,61 @@
                             </ul>
                         </div>
                     </div>
+                </div> -->
+                <!-- Right Column: Why Partner + Contact Info -->
+                <div class="col-lg-6">
+                <div class="h-100 contact-side-card">
+                    <div class="card-body">
+                    <!-- Why Partner With Us -->
+                    <h3 class="mb-3">Why Partner With Pepper Recruiting?</h3>
+                    <ul class="list-unstyled mb-4 small">
+                        <li class="mb-2">
+                        <i class="fas fa-check text-primary me-2"></i>
+                        We focus on understanding your specific needs, not using a one-size-fits-all approach.
+                        </li>
+                        <li class="mb-2">
+                        <i class="fas fa-check text-primary me-2"></i>
+                        We pre-screen candidates so you only see people who are actually worth your time.
+                        </li>
+                        <li class="mb-2">
+                        <i class="fas fa-check text-primary me-2"></i>
+                        Direct, honest communication about market fit, timelines, and expectations.
+                        </li>
+                        <li class="mb-2">
+                        <i class="fas fa-check text-primary me-2"></i>
+                        Flexible options: contract, contract-to-hire, and direct-hire solutions.
+                        </li>
+                        <li class="mb-3">
+                        <i class="fas fa-check text-primary me-2"></i>
+                        A single point of contact who learns your business and hiring style.
+                        </li>
+                    </ul>
+
+                    <!-- Contact Info -->
+                    <h4 class="mb-2">Contact Information</h4>
+                    <ul class="list-unstyled mb-4">
+                        <li class="mb-1">
+                        <i class="fas fa-phone text-primary me-2"></i>
+                        <a href="tel:+15129931572" class="text-decoration-none text-light">
+                            (512) 993-1572
+                        </a>
+                        </li>
+                        <li class="mb-1">
+                        <i class="fas fa-envelope text-primary me-2"></i>
+                        <a href="mailto:admin@pepperrecruiting.com" class="text-decoration-none text-light">
+                            admin@pepperrecruiting.com
+                        </a>
+                        </li>
+                    </ul>
+
+                    <!-- Business Hours -->
+                    <h4 class="mb-2">Business Hours</h4>
+                    <ul class="list-unstyled mb-0 small">
+                        <li>Monday – Friday: 9:00 AM – 6:00 PM (CST)</li>
+                        <li>Saturday – Sunday: Closed</li>
+                    </ul>
+                    </div>
+                </div>
                 </div>
             </div>
         </div>

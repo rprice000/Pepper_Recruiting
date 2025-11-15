@@ -84,17 +84,17 @@ footer {
   color: #f8f9fa;
 }
 
-.navbar-nav .nav-link {
-  font-size: 1.05rem;       /* increase link text size */
+/* .navbar-nav .nav-link {
+  font-size: 1.05rem;       
   font-weight: 500;
   letter-spacing: 0.04em;
-  padding: 0.6rem 1rem;     /* larger click area */
+  padding: 0.6rem 1rem;     
 }
 
 .hero-navbar .nav-link.active,
 .hero-navbar .nav-link:hover {
   color: #0d6efd;
-}
+} */
 
 .services-header,
 .contact-header {
@@ -294,9 +294,10 @@ footer {
 
 /* Header Section */
 .services-header {
-  background-image: url("https://images.unsplash.com/photo-1521791136064-7986c2920216");
+  background-image: url('../assets/images/services-hero-3.png');
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   position: relative;
   min-height: 60vh;
   padding-top: 100px;
@@ -305,12 +306,30 @@ footer {
 .services-header .overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.55);
-  z-index: 1;
+  /* background: rgba(0, 0, 0, 0.55); */
+  /* z-index: 1; */
 }
 .services-header .container {
   position: relative;
   z-index: 2;
+}
+
+/* Right-aligned hero content for services page */
+.services-hero-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  padding-top: 120px;
+  padding-bottom: 60px;
+  display: flex;
+}
+
+/* The dark transparent content box */
+.services-hero-box {
+  background: rgba(0, 0, 0, 0.55); /* match homepage hero box */
+  border-radius: 12px;
+  max-width: 500px;
+  backdrop-filter: blur(2px);
 }
 
 /* Service Cards */
@@ -325,6 +344,101 @@ footer {
   transform: translateY(-5px);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
 }
+
+
+
+/* ------------------------------- */
+/* FAQ SECTION STYLING             */
+/* ------------------------------- */
+
+.faq-section {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+/* Section Headers */
+.faq-section h2,
+.faq-section h3 {
+  letter-spacing: 0.5px;
+}
+
+/* Accordion overrides */
+.accordion-item {
+  background-color: #1c1c1c; /* dark card look */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.accordion-button {
+  background-color: #1c1c1c;
+  color: #fff;
+  padding: 1rem 1.25rem;
+  font-weight: 500;
+  border: none;
+  box-shadow: none !important;
+  transition: background-color 0.2s ease;
+}
+
+/* Icon rotation when opening */
+.accordion-button::after {
+  filter: invert(1); /* make arrow white */
+  transition: transform 0.2s ease;
+}
+
+.accordion-button:not(.collapsed)::after {
+  transform: rotate(180deg);
+}
+
+/* Hover state */
+.accordion-button:hover {
+  background-color: #252525;
+}
+
+/* Active open state */
+.accordion-button:not(.collapsed) {
+  background-color: #0d6efd;   /* your brand blue */
+  color: #fff;
+}
+
+/* Accordion body */
+.accordion-body {
+  background-color: #151515;
+  color: #dcdcdc;
+  padding: 1rem 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  line-height: 1.6;
+}
+
+/* Headings for "General", "Employer", "Candidate" */
+.faq-section h3 {
+  margin-bottom: 1.25rem;
+  margin-top: 2.5rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+/* Contact line */
+.faq-contact-line {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  color: #dcdcdc;
+  font-size: 1rem;
+}
+
+.faq-contact-line a {
+  color: #0d6efd;
+  text-decoration: none;
+}
+
+.faq-contact-line a:hover {
+  text-decoration: underline;
+}
+
+
 
 /* CTA Section (Shared with Home) */
 .cta-section {
@@ -351,25 +465,38 @@ footer {
 ------------------------------------------------------- */
 
 /* Header Section */
+/* Centered hero content for Contact page */
+.contact-hero-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  padding-top: 120px;
+  padding-bottom: 60px;
+  display: flex;
+}
+
+/* The dark transparent content box */
+.contact-hero-box {
+  background: rgba(0, 0, 0, 0.55); /* same look as services/index */
+  border-radius: 12px;
+  max-width: 550px;
+  backdrop-filter: blur(2px);
+}
+
 .contact-header {
-  background-image: url("https://images.unsplash.com/photo-1521791055366-0d553872125f");
+  background-image: url('../assets/images/blank.png');
   background-size: cover;
   background-position: center;
   min-height: 60vh;
   position: relative;
-  padding-top: 100px;
   color: #fff;
 }
-.contact-header::before {
-  content: "";
+
+.contact-header .overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.55);
+  background: rgba(0, 0, 0, 0.35);
   z-index: 1;
-}
-.contact-header .container {
-  position: relative;
-  z-index: 2;
 }
 
 /* Tabs */
