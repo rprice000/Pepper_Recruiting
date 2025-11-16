@@ -519,7 +519,7 @@ footer a.text-light:hover {
 ------------------------------------------------------- */
 
 .privacy-hero-box .hero-title {
-  color: #ffffff !important;
+  color: #ffffff;
   background: rgba(0, 0, 0, 0.45);
   text-shadow: 0 0 8px rgba(0, 0, 0, 0.7);
   display: inline-block;
