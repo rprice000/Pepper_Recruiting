@@ -5,3 +5,9 @@ Thumbs.db
 # Editor directories and files
 .idea/
 .vscode/
+
+#Kiro
+.kiro/
+
+#Readme 2
+ReadMe2.md

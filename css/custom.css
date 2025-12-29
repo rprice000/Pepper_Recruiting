@@ -119,13 +119,61 @@ footer a.text-light:hover {
 }
 
 /* Very small screens */
-@media (max-width: 576px) {
+/* @media (max-width: 576px) {
   .brand-logo {
     height: 32px;
   }
 
   .brand-tagline {
     display: none;
+  }
+} */
+
+/* Very small screens */
+@media (max-width: 576px) {
+  /* Keep brand + hamburger on the same row */
+  .navbar > .container,
+  .navbar > .container-fluid {
+    flex-wrap: nowrap;
+  }
+
+  /* Don't let the brand take infinite width */
+  .navbar-brand {
+    min-width: 0;
+    max-width: calc(100% - 56px); /* leave space for the toggler */
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  /* Flatten brand text to one line on mobile */
+  .navbar-brand .brand-text {
+    flex-direction: row !important; /* overrides flex-column */
+    align-items: center;
+    gap: 0.4rem;
+    min-width: 0;
+  }
+
+  /* Hide tagline on phones */
+  .navbar-brand .brand-tagline {
+    display: none !important;
+  }
+
+  /* Shrink title + logo */
+  .navbar-brand .brand-title {
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .brand-logo {
+    height: 28px;
+    padding: 3px 5px;
+  }
+
+  /* Make sure the toggler stays visible */
+  .navbar-toggler {
+    flex: 0 0 auto;
   }
 }
 

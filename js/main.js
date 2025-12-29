@@ -190,7 +190,11 @@ document.addEventListener("DOMContentLoaded", () => {
         form.reset();
       } else {
         const errMsg =
-          result.error === "recaptcha_failed"
+          result.error === "only_pdf_allowed"
+            ? "Please upload a PDF file only."
+            : result.error === "file_too_large"
+            ? "PDF files must be 5MB or smaller."
+            : result.error === "recaptcha_failed"
             ? "reCAPTCHA verification failed. Please refresh and try again."
             : result.error === "file_missing"
             ? "Please attach a file before submitting."
